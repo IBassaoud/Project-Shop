@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Boutique en ligne</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/main-boutique.js" async></script>
+  <link rel="stylesheet" href="css/style-boutique.css">
+</head>
+
+<body>
+<div class="container">
+  <div class="container_header">
+  <div class="title_header">Create a product</div>
+  <!-- FORM PRODUCTS -->
+  <form action="/products" method="post" id="prod_form">
+    <div class="product_details">
+      <div class="input_box">
+        <label class="details" for="name">Name :</label>
+        <input type="text" id="name" name="name" placeholder="Name of the product" class="formin" required>
+      </div>
+
+      <div class="input_box">
+        <label class="details" for="ref">Reference :</label>
+        <input type="text" id="ref" name="ref" placeholder="Reference the product" class="formin" required>
+      </div>
+
+      <div class="input_box">
+        <label class="details" for="price">Price :</label>
+        <input type="text" id="price" name="price" placeholder="Price of the product" class="formin" required>
+      </div>
+
+      <div class="input_box">
+        <label class="details" for="inv">Inventory :</label>
+        <input type="text" id="inv" name="inv" placeholder="Amount in the inventory" class="formin" required>
+      </div>
+
+      <div class="input_box input_files">
+        <label class="details" for="files">Select an Image preferably &gt; than 2MB</label>
+        <input type="file" id="files" name="files" accept="image/png, image/jpeg" class="formin input_img" required>
+        <p id="state">No images stored in your browser.</p>
+        <div id="myprod_img"></div>
+        <a href="#" id="deleteImgs">Delete Image</a>
+        </div>
+
+      <div class="input_box">
+        <label class="details" for="desc">Description   :</label>
+        <textarea id="desc" name="desc" class="formin input_des"></textarea>
+      </div>
+
+        <div class="button_add">
+          <input type="submit" id="go" value="Add Product"></div>
+      </div>
+          </form>
+  </div>
+  
+  <div class="product_items_container"></div>
+
+  <div id="cart_container" class="container_body" >
+    <div class="title_body">Me big money ! Me Shop !</div>
+    <div id="mybody"></div>
+    
+  </div>
+</div>
+
+</body>
+<script>
+
+</script>
+</html>

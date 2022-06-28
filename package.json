@@ -1,0 +1,21 @@
+{
+  "name": "boutique",
+  "version": "1.0.0",
+  "description": "Boutique de magasin en ligne avec une interface administrateur qui permet de créer et manipuler les produits en stocks et une interface commande et achat pour le client de la boutique",
+  "main": "server-boutique.js",
+  "scripts": {
+    "start-boutique": "node server-boutique",
+    "dev-boutique": "nodemon server-boutique"
+  },
+  "author": "Ismail BASSAOUD",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-fileupload": "^1.4.0",
+    "node-fetch": "^2.6.7",
+    "socket.io": "^4.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
+}

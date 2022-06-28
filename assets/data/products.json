@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Pomme MEDIUM SIZE",
+        "ref": "pom-1",
+        "price": "10",
+        "inv": "20",
+        "files": "pexels-pierreantoine-caisso-4562968.jpg",
+        "desc": "Belle pomme"
+    },
+    {
+        "name": "Fraise",
+        "ref": "fr-1",
+        "price": "4",
+        "inv": "50",
+        "files": "pexels-pierreantoine-caisso-4562968.jpg",
+        "desc": "Fraises"
+    },
+    {
+        "name": "kiwi",
+        "ref": "kiw-1",
+        "price": "4",
+        "inv": "50",
+        "files": "pexels-photomix-company-867349.jpg",
+        "desc": "Kiwi"
+    },
+    {
+        "name": "kiwi LARGE",
+        "ref": "kiw-2",
+        "price": "6",
+        "inv": "100",
+        "files": "pexels-photomix-company-867349.jpg",
+        "desc": "Grand Kiwi "
+    },
+    {
+        "name": "Pasteque MOROCCO",
+        "ref": "pas-2",
+        "price": "6",
+        "inv": "80",
+        "files": "pexels-bruno-scramgnon-1337825.jpg",
+        "desc": "Pasteque du Maroc."
+    }
+]
