@@ -20,6 +20,45 @@ function ready() {
     button.addEventListener("click", removeProductItem)
   }
 
+  let dataNP = document.getElementsByClassName("formin");
+  
+  document.getElementById('prod_form').addEventListener('submit', function(e) {
+    e.preventDefault()
+    let inputFile = document.getElementById('files');
+    let fd = new FormData();
+    for (i=0; i<dataNP.length; i++) {
+      fd.append(`${dataNP[i].id}`, dataNP[i].value)
+    }
+    fd.append("files",inputFile.files[0].name)
+    fd.append("file",inputFile.files[0])
+    // console.log(inputFile.files[0]);
+    // console.log(fd);
+    let req = new Request('/products', {
+      method: "POST",
+      body: fd
+    });
+
+    fetch(req)
+    .then (
+      response => response.json()
+    )
+    .then(
+      response2 => console.log(response2) 
+    )
+    .catch(
+      function(err){
+        console.log(err.message)
+      }
+    ) 
+    alert("Votre produit a été ajoutée avec succès")  
+    for (i=0; i<dataNP.length; i++) {
+      dataNP[i].value = '';
+      loadshop2()
+    }
+    deleteImages()
+  }
+  )
+
   //to make the total update every time we change the quantity and prevent negative number  
   let quantityInputs = document.getElementsByClassName("prod_quantity_input")
   for (i = 0; i <quantityInputs.length; i++){
@@ -56,48 +95,26 @@ function quantityChanged(e) {
 
 //creation d'un tableau vide dans le localStorage
 
+// function loadFromLocalStorage(){
+//   let images = JSON.parse(localStorage.getItem("images"))
 
-let imagesObject = [];
-function handleFileSelect(e) {
-  let files = e.target.files; // FileList object
-    // Loop through the FileList and render image files as thumbnails.
-    for ( i = 0; f = files[i]; i++) {
-
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
-    let reader = new FileReader();
-      // Closure to capture the file information.
-      reader.onload = function(e) {
-        displayImgData(e.target.result)
-        addImage(e.target.result);
-    };
-
-    reader.readAsDataURL(f);
-  }
-}
-
-function loadFromLocalStorage(){
-  let images = JSON.parse(localStorage.getItem("images"))
-
-  if(images && images.length > 0){
-    imagesObject = images;
+//   if(images && images.length > 0){
+//     imagesObject = images;
     
-    displayNumberOfImgs();
-    images.forEach(displayImgData);
-  }
-}
+//     displayNumberOfImgs();
+//     images.forEach(displayImgData);
+//   }
+// }
 
-function addImage(imgData){
-  imagesObject.push(imgData);
-  displayNumberOfImgs();
-  localStorage.setItem("images", JSON.stringify(imagesObject));
-}
+// function addImage(imgData){
+//   imagesObject.push(imgData);
+//   displayNumberOfImgs();
+//   localStorage.setItem("images", JSON.stringify(imagesObject));
+// }
 
 function displayImgData(imgData){
   let span = document.createElement('span');
-  span.innerHTML = `<img class="thumb formin" id"prodImg" src="` + imgData + `"/>`;
+  span.innerHTML = `<img class="thumb" id"prodImg" src="` + imgData + `"/>`;
   document.getElementById('myprod_img').insertBefore(span, null);
 }
 
@@ -121,47 +138,34 @@ function deleteImages(){
   document.getElementById('myprod_img').innerHTML = "";
 }
 
-document.getElementById('files').addEventListener('change', handleFileSelect, false);
+// document.getElementById('files').addEventListener('change', handleFileSelect, false);
 document.getElementById('deleteImgs').addEventListener("click", deleteImages);
-loadFromLocalStorage();
+// loadFromLocalStorage();
 
-//action du bouton d'envoi
-  let mybutton = document.getElementById("go");
-  mybutton.addEventListener("click",manage_form)
-  function manage_form() {
-    //je recupère tout les inputs concernés (le formulaire)
-    let mydata = document.getElementsByClassName("formin");
-    //j'itèrre sur chaque element du form pour récupérer son id
-    //et sa valeur pour pousser => JSON : cle : valeur
-    let jsonData = {}  //cle : valeur grace au {}
-    for (i=0; i<mydata.length; i++) {
-      //console.log(mydata[i].id,mydata[i].value);
-      jsonData[mydata[i].id] = mydata[i].value;
-    }
-
-    //je recupère les détails déjà stockés
-    let myolddata = localStorage.getItem("entrepot");
-    //je les transforme en JSON
-    myolddata = JSON.parse(myolddata);
-    //data.push(nouveau produit)
-    myolddata.push(jsonData);
-    //je remet le tableau dans le local storage
-    localStorage.setItem("entrepot", JSON.stringify(myolddata));
-    loadshop2()
-    updateProductTotal()
-  }
- 
-
-  // création de tableau
+//TODO display an interface that allows the user to select what he wants to buy
   function loadshop1(){
     //recupère les localstorage (et parse les)
     let mydata = JSON.parse(localStorage.getItem("entrepot"));
     let mytablecontainer = document.getElementById("mybody");
     let tableconcat = ``
   }  
+  
   function loadshop2(){
     //recupère les localstorage (et parse les)
-    let mydata = JSON.parse(localStorage.getItem("entrepot"));
+    fetch('/loadshop')
+    .then(
+      respData => respData.json()
+    )
+    .then(
+      respData2 => loadShopFromServer(respData2)
+    )
+    .catch(
+      function(err){
+        console.log(err.message) 
+      }
+    )
+    function loadShopFromServer(myproductsData){
+    // let mydata = JSON.parse(localStorage.getItem("entrepot"));
     let mytablecontainer = document.getElementById("mybody");
     let tableconcat = `<table>
                         <thead>
@@ -177,14 +181,14 @@ loadFromLocalStorage();
                         </thead>
                         <tbody class="container_product">` ;
     //console.log(mydata);
-    for (i=0;i<mydata.length;i++){
+    for (i=0;i<myproductsData.length;i++){
       tableconcat += `<tr id="products" class="prod_parent">`
-      tableconcat += `<td class='prod_file prod'><img src=" "></td>
-                      <td class="prod_name prod">${mydata[i].name}</td>
-                      <td class="prod_ref prod">${mydata[i].ref}</td>
-                      <td class="prod_desc prod">${mydata[i].desc}</td>
-                      <td class="prod_inv prod">${mydata[i].inv}</td>
-                      <td class="prod_price prod">${mydata[i].price} €</td>
+      tableconcat += `<td class='prod_file prod'><img id="shop_img"src="${myproductsData[i].files}"></td>
+                      <td class="prod_name prod">${myproductsData[i].name}</td>
+                      <td class="prod_ref prod">${myproductsData[i].ref}</td>
+                      <td class="prod_desc prod">${myproductsData[i].desc}</td>
+                      <td class="prod_inv prod">${myproductsData[i].inv}</td>
+                      <td class="prod_price prod">${myproductsData[i].price} €</td>
                       <td class="prod_quantity prod">
                         <input class="prod_quantity_input" type="number" value="1">
                         <button class="btn btn_danger" type="button">REMOVE</button>
@@ -200,6 +204,7 @@ loadFromLocalStorage();
     mytablecontainer.innerHTML = tableconcat;
     //troutine de construction de la table
     updateProductTotal()
+    }
   }
   loadshop2()
 

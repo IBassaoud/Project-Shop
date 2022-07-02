@@ -1,42 +1,74 @@
 [
     {
-        "name": "Pomme MEDIUM SIZE",
-        "ref": "pom-1",
-        "price": "10",
-        "inv": "20",
-        "files": "pexels-pierreantoine-caisso-4562968.jpg",
-        "desc": "Belle pomme"
-    },
-    {
-        "name": "Fraise",
-        "ref": "fr-1",
-        "price": "4",
-        "inv": "50",
-        "files": "pexels-pierreantoine-caisso-4562968.jpg",
-        "desc": "Fraises"
-    },
-    {
-        "name": "kiwi",
-        "ref": "kiw-1",
-        "price": "4",
-        "inv": "50",
-        "files": "pexels-photomix-company-867349.jpg",
-        "desc": "Kiwi"
-    },
-    {
-        "name": "kiwi LARGE",
-        "ref": "kiw-2",
-        "price": "6",
+        "name": "Apple",
+        "ref": "apl-1",
+        "price": "1.5",
         "inv": "100",
-        "files": "pexels-photomix-company-867349.jpg",
-        "desc": "Grand Kiwi "
+        "desc": "Red apple",
+        "files": "/images/5a6a6fca6da2310d02589b05d0d15aed.jpg"
     },
     {
-        "name": "Pasteque MOROCCO",
-        "ref": "pas-2",
-        "price": "6",
-        "inv": "80",
-        "files": "pexels-bruno-scramgnon-1337825.jpg",
-        "desc": "Pasteque du Maroc."
+        "name": "Kiwi",
+        "ref": "kiw-1",
+        "price": "1.2",
+        "inv": "50",
+        "desc": "You’ve got to be kiwi-ing me, look at this amazing fruit\r\n",
+        "files": "/images/1a8f7e3c19705fa1cb2085e995e0340b.jpg"
+    },
+    {
+        "name": "Strawberry",
+        "ref": "str-1",
+        "price": "2.5",
+        "inv": "100",
+        "desc": "Buy this fruit and I'll love you berry much",
+        "files": "/images/272155bf494a0a5a5abe2249a71d8260.jpg"
+    },
+    {
+        "name": "Banana",
+        "ref": "ban-1",
+        "price": "2",
+        "inv": "40",
+        "desc": "Banana used to go with a prune because he couldn’t find a date.\r\n",
+        "files": "/images/a0154ad150449c918f951cb3631cde6a.jpg"
+    },
+    {
+        "name": "Pomegranate",
+        "ref": "pgr-1",
+        "price": "3.99",
+        "inv": "50",
+        "desc": "Pomegranate what an astonishing name, yeah that's a fruit",
+        "files": "/images/4a4f99fd14d9cf844a7fcf2ca2825bc5.jpg"
+    },
+    {
+        "name": "Cherry",
+        "ref": "che-1",
+        "price": "2.2",
+        "inv": "50",
+        "desc": "For me, life is a bowl of cherries",
+        "files": "/images/7938791eab3636c273d105fa93866a2d.jpg"
+    },
+    {
+        "name": "Peach",
+        "ref": "pea-1",
+        "price": "2.35",
+        "inv": "60",
+        "desc": "Peach is adored as a flavorful and solid summer organic product in most temperature districts of the world",
+        "files": "/images/cc7e5f973c0bb3af5f32b101338a3f6e.jpg"
+    },
+    {
+        "name": "Watermelon",
+        "ref": "wat-1",
+        "price": "5.99",
+        "inv": "45",
+        "desc": "Watermelon is 92% water and 8% sugar, so it is aptly named, and remained among the most refreshing and thirst-quenching fruits of all",
+        "files": "/images/a63c353e2c881bbfc272d6a2aeb11e63.jpg"
+    },
+    {
+        "name": "Melon",
+        "ref": "mel-1",
+        "price": "6.5",
+        "inv": "40",
+        "desc": "You Are One In a Melon to have the opportunity to savor this wonderful fruit",
+        "files": "/images/e0b0a48a4ec04aeb672f47f91f52822f.jpg"
     }
 ]

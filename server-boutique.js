@@ -1,7 +1,11 @@
 const express = require('express');
 const fs = require('fs');
-const { get } = require('http');
+// const { get } = require('http');
 const fetch = require('node-fetch');
+const path = require('path');
+const multer = require("multer");
+const upload = multer({ dest: "assets/images/"});
+
 
 const app = express();
 const port = 8090;
@@ -12,7 +16,7 @@ app.use(express.static((__dirname + '/assets')));
 
 var mydata = fs.readFileSync('assets/data/products.json')
 var productsData = JSON.parse(mydata);
-console.log(productsData);
+// console.log(productsData);
 
 //Affiche mon fichier HTML 
 app.get("/", function(req, res){
@@ -23,16 +27,28 @@ app.get("/", function(req, res){
     });
 });
 
-app.post('/products', function(req, res) {
-    console.log('inside function', productsData);
-    let newProd = req.body
+app.get('/loadshop', function (req, res) {
+        res.json(productsData);
+});
+
+app.post('/products', upload.single("file"), function(req, res) {
+    let newProd = req.body ;
+    console.log(newProd.files)
+    newProd.files = `/images/${req.file.filename}.jpg` ;
+    let oldpath = req.file.path;    
+    let newpath = 'assets/images/' + req.file.filename+".jpg"; // filetoupload = name de mon input
+    console.log('Requete le file : ', req.file);
+    console.log('Requete TOUT le body : ', req.body);
+    // newProd.files = 'assets/images/' + req.file.filename + '.jpg';
     productsData.push(newProd);
-    console.log(productsData)
+    fs.rename(oldpath, newpath, function(err){
+        if(err) throw err;
+        })
     fs.writeFile('assets/data/products.json', JSON.stringify(productsData, null, 4), (err) => {
         if (err) throw err;
-        console.log('New product added successfully')
+        console.log('New product added successfully\n----------\n')
     })
-    return res.redirect('/');
+    res.json(productsData);
     });
 
 app.get('/products', function (req, res) {

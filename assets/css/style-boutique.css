@@ -5,7 +5,7 @@
 }
 
 body {
-    height:100vh;
+    height:100%;
     background-color: transparent;
     background-size: cover;
     background-repeat: no-repeat;
@@ -75,6 +75,16 @@ form .product_details .input_box {
 #myprod_img img {
     max-width: 300px;
     max-height: 250px;
+}
+
+.prod_name {
+    padding-left: 5px !important ;
+}
+
+#shop_img {
+    width: 150px;
+    height: 150px;
+    text-align: center;
 }
 
 #deleteImgs {
@@ -215,11 +225,13 @@ form .button_add input:hover {
     border-bottom: 0.15rem solid #00c3ff;
 } */
 
+
 .prod_parent:nth-child(1) td {
-    padding-top: 2rem;
+    padding-top: 0.5rem;
 }
+
 .prod_parent:nth-last-child(3) td {
-    padding-bottom: 2rem;
+    padding-bottom: 0.5rem;
 }
 
 #cart_container table tbody tr:nth-last-child(2) td {

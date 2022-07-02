@@ -14,7 +14,7 @@
   <div class="container_header">
   <div class="title_header">Create a product</div>
   <!-- FORM PRODUCTS -->
-  <form action="/products" method="post" id="prod_form">
+  <form id="prod_form">
     <div class="product_details">
       <div class="input_box">
         <label class="details" for="name">Name :</label>
@@ -37,11 +37,11 @@
       </div>
 
       <div class="input_box input_files">
-        <label class="details" for="files">Select an Image preferably &gt; than 2MB</label>
-        <input type="file" id="files" name="files" accept="image/png, image/jpeg" class="formin input_img" required>
+        <label class="details" for="files">Select an Image for the product :</label>
+        <input type="file" id="files" name="files" accept="image/png, image/jpeg" class="input_img">
         <p id="state">No images stored in your browser.</p>
         <div id="myprod_img"></div>
-        <a href="#" id="deleteImgs">Delete Image</a>
+        <a href="#" onclick="return false" id="deleteImgs">Delete Image</a>
         </div>
 
       <div class="input_box">
