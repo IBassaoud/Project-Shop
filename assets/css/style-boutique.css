@@ -82,7 +82,7 @@ form .product_details .input_box {
 }
 
 #shop_img {
-    width: 150px;
+    width: fit-content;
     height: 150px;
     text-align: center;
 }
@@ -147,7 +147,7 @@ form .button_add input:hover {
 
 /*CONTAINER BODY - SHOP*/
 .container_body {
-    max-width: 1000px;
+    max-width: 1200px;
     width: 100%;
     height: fit-content;
     background: #fff;
@@ -220,11 +220,6 @@ form .button_add input:hover {
 #cart_container table tbody {
     border:0.15rem solid #00c3ff;
 } 
-
-/* #cart_container table tbody tr:nth-last-child(3) {
-    border-bottom: 0.15rem solid #00c3ff;
-} */
-
 
 .prod_parent:nth-child(1) td {
     padding-top: 0.5rem;

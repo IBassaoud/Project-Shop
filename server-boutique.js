@@ -37,9 +37,8 @@ app.post('/products', upload.single("file"), function(req, res) {
     newProd.files = `/images/${req.file.filename}.jpg` ;
     let oldpath = req.file.path;    
     let newpath = 'assets/images/' + req.file.filename+".jpg"; // filetoupload = name de mon input
-    console.log('Requete le file : ', req.file);
-    console.log('Requete TOUT le body : ', req.body);
-    // newProd.files = 'assets/images/' + req.file.filename + '.jpg';
+    // console.log('Requete le file : ', req.file);
+    // console.log('Requete TOUT le body : ', req.body);
     productsData.push(newProd);
     fs.rename(oldpath, newpath, function(err){
         if(err) throw err;
@@ -50,14 +49,6 @@ app.post('/products', upload.single("file"), function(req, res) {
     })
     res.json(productsData);
     });
-
-app.get('/products', function (req, res) {
-    fs.readFile('assets/data/products.json', (err,data)=>{
-        if (err) throw err;
-        let myproducts = JSON.parse(data);
-        res.json(myproducts);
-    })
-});
 
 app.patch('/products/:ref', function(req, res) {
     fs.readFile('assets/data/products.json', (err, data) => {
