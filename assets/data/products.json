@@ -70,5 +70,13 @@
         "inv": "40",
         "desc": "You Are One In a Melon to have the opportunity to savor this wonderful fruit",
         "files": "/images/e0b0a48a4ec04aeb672f47f91f52822f.jpg"
+    },
+    {
+        "name": "Poire",
+        "ref": "poi-1",
+        "price": "8.89",
+        "inv": "20",
+        "desc": "Poire williams !",
+        "files": "/images/70d9d2ec3c5b2d3d0d4f70d155359630.jpg"
     }
 ]
